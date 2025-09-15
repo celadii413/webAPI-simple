@@ -169,3 +169,4 @@ D:\TH\LTW2\WebAPI-simple\WebAPI-simple\obj\Debug\net8.0\refint\WebAPI-simple.dll
 D:\TH\LTW2\WebAPI-simple\WebAPI-simple\obj\Debug\net8.0\WebAPI-simple.pdb
 D:\TH\LTW2\WebAPI-simple\WebAPI-simple\obj\Debug\net8.0\WebAPI-simple.genruntimeconfig.cache
 D:\TH\LTW2\WebAPI-simple\WebAPI-simple\obj\Debug\net8.0\ref\WebAPI-simple.dll
+D:\TH\LTW2\WebAPI-simple\WebAPI-simple\obj\Debug\net8.0\WebAPI-simple.sourcelink.json
