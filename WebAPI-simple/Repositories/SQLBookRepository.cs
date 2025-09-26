@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using System.ComponentModel;
 using WebAPI_simple.Data;
 using WebAPI_simple.Models.Domain;
 using WebAPI_simple.Models.DTO;
@@ -54,6 +55,30 @@ namespace WebAPI_simple.Repositories
 
         public async Task<BookWithAuthorAndPublisherDTO> AddBookAsync(AddBookRequestDTO addBookRequestDTO)
         {
+            // Kiểm tra Title không được để trống và không chứa ký tự đặc biệt
+            if (string.IsNullOrWhiteSpace(addBookRequestDTO.Title) || !System.Text.RegularExpressions.Regex.IsMatch(addBookRequestDTO.Title, @"^[\p{L}\p{N}\p{P}\p{Zs}]+$"))
+            {
+                throw new Exception("Book Title cannot be empty or contain special characters");
+            }
+
+            // Nhà xuất bản phải tồn tại
+            if (!await _dbContext.Publishers.AnyAsync(p => p.Id == addBookRequestDTO.PublisherID))
+                throw new Exception("PublisherId does not exist");
+
+            // NXB không được xuất bản 2 sách cùng tên
+            if (await _dbContext.Books.AnyAsync(b => b.PublisherID == addBookRequestDTO.PublisherID && b.Title == addBookRequestDTO.Title))
+                throw new Exception("This publisher already has a book with the same title");
+
+            // Nhà xuất bản tối đa 100 sách 1 năm
+            int year = DateTime.Now.Year;
+            int publishedCount = await _dbContext.Books.CountAsync(b => b.PublisherID == addBookRequestDTO.PublisherID && b.DateAdded.Year == year);
+            if (publishedCount >= 100)
+                throw new Exception("Publisher cannot publish more than 100 books in a year");
+
+            // Một sách có ít nhất 1 tác giả
+            if (addBookRequestDTO.AuthorIds == null || !addBookRequestDTO.AuthorIds.Any())
+                throw new Exception("A book must have at least 1 author");
+
             var bookDomainModel = new Book
             {
                 Title = addBookRequestDTO.Title,
@@ -70,35 +95,29 @@ namespace WebAPI_simple.Repositories
             _dbContext.Books.Add(bookDomainModel);
             await _dbContext.SaveChangesAsync();
 
-            foreach (var id in addBookRequestDTO.AuthorIds)
+            foreach (var authorId in addBookRequestDTO.AuthorIds)
             {
-                var bookAuthor = new Book_Author()
-                {
-                    BookId = bookDomainModel.Id,
-                    AuthorId = id
-                };
-                _dbContext.Book_Authors.Add(bookAuthor);
+                // kiểm tra tác giả tồn tại
+                if (!await _dbContext.Authors.AnyAsync(a => a.Id == authorId))
+                    throw new Exception($"AuthorId {authorId} does not exist");
+
+                // Kiểm tra trùng lặp tác giả
+                if (await _dbContext.Book_Authors.AnyAsync(ba => ba.BookId == bookDomainModel.Id && ba.AuthorId == authorId))
+                    throw new Exception("This Author is already assigned to the Book");
+
+                // Tác giả không thể viết hơn 20 sách
+                int bookCount = await _dbContext.Book_Authors.CountAsync(ba => ba.AuthorId == authorId);
+                if (bookCount >= 20)
+                    throw new Exception($"Author {authorId} cannot write more than 20 books");
+
+                _dbContext.Book_Authors.Add(new Book_Author { BookId = bookDomainModel.Id, AuthorId = authorId });
             }
 
             await _dbContext.SaveChangesAsync();
 
-            return new BookWithAuthorAndPublisherDTO
-            {
-                Id = bookDomainModel.Id,
-                Title = bookDomainModel.Title,
-                Description = bookDomainModel.Description,
-                IsRead = bookDomainModel.IsRead,
-                DateRead = bookDomainModel.DateRead,
-                Rate = bookDomainModel.Rate,
-                Genre = bookDomainModel.Genre,
-                CoverUrl = bookDomainModel.CoverUrl,
-                PublisherName = (await _dbContext.Publishers.FindAsync(bookDomainModel.PublisherID))?.Name ?? "",
-                AuthorNames = await _dbContext.Book_Authors
-                    .Where(b => b.BookId == bookDomainModel.Id)
-                    .Select(b => b.Author.FullName)
-                    .ToListAsync()
-            };
+            return await GetBookByIdAsync(bookDomainModel.Id) ?? throw new Exception("Book was not saved correctly");
         }
+
 
         public async Task<BookWithAuthorAndPublisherDTO?> UpdateBookByIdAsync(int id, AddBookRequestDTO bookDTO)
         {

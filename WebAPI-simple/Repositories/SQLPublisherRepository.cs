@@ -38,11 +38,11 @@ namespace WebAPI_simple.Repositories
 
         public async Task<AddPublisherRequestDTO> AddPublisherAsync(AddPublisherRequestDTO addPublisherRequestDTO)
         {
-            var publisher = new Publisher
-            {
-                Name = addPublisherRequestDTO.Name
-            };
+            var exists = await _dbContext.Publishers.AnyAsync(p => p.Name == addPublisherRequestDTO.Name);
+            if (exists)
+                throw new Exception("Tên nhà xuất bản đã tồn tại");
 
+            var publisher = new Publisher { Name = addPublisherRequestDTO.Name };
             _dbContext.Publishers.Add(publisher);
             await _dbContext.SaveChangesAsync();
 
@@ -62,6 +62,9 @@ namespace WebAPI_simple.Repositories
 
         public async Task<Publisher?> DeletePublisherByIdAsync(int id)
         {
+            if (await _dbContext.Books.AnyAsync(b => b.PublisherID == id))
+                throw new Exception("Không thể xoá nhà xuất bản vì có sách liên kết");
+
             var publisher = await _dbContext.Publishers.FirstOrDefaultAsync(p => p.Id == id);
             if (publisher == null) return null;
 

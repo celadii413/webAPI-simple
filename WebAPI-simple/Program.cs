@@ -1,6 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 using WebAPI_simple.Data;
 using WebAPI_simple.Repositories;
+using WebAPI_simple.Middlewares;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -33,6 +34,7 @@ app.UseHttpsRedirection();
 
 app.UseAuthorization();
 
+app.UseValidateJsonMiddleware();
 app.MapControllers();
 
 app.Run();

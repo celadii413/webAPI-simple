@@ -41,8 +41,15 @@ namespace WebAPI_simple.Controllers
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
 
-            var createdPublisher = await _publisherRepository.AddPublisherAsync(addPublisherRequestDTO);
-            return Ok(createdPublisher);
+            try
+            {
+                var createdPublisher = await _publisherRepository.AddPublisherAsync(addPublisherRequestDTO);
+                return Ok(createdPublisher);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(new { message = ex.Message });
+            }
         }
 
         [HttpPut("update-publisher-by-id/{id}")]
@@ -58,11 +65,19 @@ namespace WebAPI_simple.Controllers
         [HttpDelete("delete-publisher-by-id/{id}")]
         public async Task<IActionResult> DeletePublisherById([FromRoute] int id)
         {
-            var deletedPublisher = await _publisherRepository.DeletePublisherByIdAsync(id);
-            if (deletedPublisher == null)
-                return NotFound($"Publisher with Id = {id} not found");
+            try
+            {
+                var deletedPublisher = await _publisherRepository.DeletePublisherByIdAsync(id);
+                if (deletedPublisher == null)
+                    return NotFound(new { message = $"Publisher with Id = {id} not found" });
 
-            return Ok(deletedPublisher);
+                return Ok(new { message = "Publisher deleted successfully" });
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(new { message = ex.Message });
+            }
         }
+
     }
 }

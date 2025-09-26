@@ -1,9 +1,12 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using WebAPI_simple.CustomActionFilter;
 using WebAPI_simple.Data;
 using WebAPI_simple.Models.Domain;
 using WebAPI_simple.Models.DTO;
 using WebAPI_simple.Repositories;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace WebAPI_simple.Controllers
 {
@@ -34,11 +37,24 @@ namespace WebAPI_simple.Controllers
         }
 
         [HttpPost("add-book")]
+        [ValidateModel]
+        //[Authorize(Roles = "Write")]
         public async Task<IActionResult> AddBook([FromBody] AddBookRequestDTO addBookRequestDTO)
         {
-            var book = await _bookRepository.AddBookAsync(addBookRequestDTO);
-            return Ok(book);
+            try
+            {
+                if (!ValidateAddBook(addBookRequestDTO))
+                    return BadRequest(ModelState);
+
+                var bookAdd = await _bookRepository.AddBookAsync(addBookRequestDTO);
+                return Ok(bookAdd);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message); 
+            }
         }
+
 
         [HttpPut("update-book-by-id/{id}")]
         public async Task<IActionResult> UpdateBookById(int id, [FromBody] AddBookRequestDTO bookDTO)
@@ -55,5 +71,33 @@ namespace WebAPI_simple.Controllers
             if (!deleted) return NotFound();
             return Ok();
         }
+
+        #region Private methods
+        private bool ValidateAddBook(AddBookRequestDTO addBookRequestDTO)
+        {
+            if (addBookRequestDTO == null)
+            {
+                ModelState.AddModelError(nameof(addBookRequestDTO), $"Please add book data");
+                return false;
+            }
+            // kiem tra Description NotNull
+            if (string.IsNullOrEmpty(addBookRequestDTO.Description))
+            {
+                ModelState.AddModelError(nameof(addBookRequestDTO.Description),
+                $"{nameof(addBookRequestDTO.Description)} cannot be null");
+            }
+            // kiem tra rating (0,5)
+            if (addBookRequestDTO.Rate < 0 || addBookRequestDTO.Rate > 5)
+            {
+                ModelState.AddModelError(nameof(addBookRequestDTO.Rate),
+                $"{nameof(addBookRequestDTO.Rate)} cannot be less than 0 and more than 5");
+            }
+            if (ModelState.ErrorCount > 0)
+            {
+                return false;
+            }
+            return true;
+        }
+        #endregion
     }
 }
