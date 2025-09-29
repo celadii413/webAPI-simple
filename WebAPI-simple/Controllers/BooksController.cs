@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using System.Text.Json;
 using WebAPI_simple.CustomActionFilter;
 using WebAPI_simple.Data;
 using WebAPI_simple.Models.Domain;
@@ -12,22 +13,36 @@ namespace WebAPI_simple.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize]
     public class BooksController : ControllerBase
     {
+        private readonly AppDbContext _dbContext;
         private readonly IBookRepository _bookRepository;
+        private readonly ILogger<BooksController> _logger;
 
-        public BooksController(IBookRepository bookRepository)
+        public BooksController(AppDbContext dbContext, IBookRepository bookRepository, ILogger<BooksController> logger)
         {
+            _dbContext = dbContext;
             _bookRepository = bookRepository;
+            _logger = logger;
         }
 
+        //GET: /api/Books/get-all-books?filterOn=Name&filterQuery=Track
         [HttpGet("get-all-books")]
+        [Authorize(Roles = "Read")]
         public async Task<IActionResult> GetAll([FromQuery] string? filterOn, [FromQuery] string? filterQuery, 
             [FromQuery] string? sortBy, [FromQuery] bool isAscending,
             [FromQuery] int pageNumber = 1, [FromQuery] int pageSize = 100)
         {
+            _logger.LogInformation("GetAll Book Action method was invoked");
+            _logger.LogWarning("This is a warning log");
+            _logger.LogError("This is an error log");
+
             //sử dụng repository pattern
             var allBooks = await _bookRepository.GetAllBooksAsync(filterOn, filterQuery, sortBy, isAscending, pageNumber, pageSize);
+
+            //debug
+            _logger.LogInformation($"Finished GetAllBook request with data {JsonSerializer.Serialize(allBooks)}");
             return Ok(allBooks);
         }
 
@@ -41,7 +56,7 @@ namespace WebAPI_simple.Controllers
 
         [HttpPost("add-book")]
         [ValidateModel]
-        //[Authorize(Roles = "Write")]
+        [Authorize(Roles = "Read,Write")]
         public async Task<IActionResult> AddBook([FromBody] AddBookRequestDTO addBookRequestDTO)
         {
             try
@@ -60,6 +75,7 @@ namespace WebAPI_simple.Controllers
 
 
         [HttpPut("update-book-by-id/{id}")]
+        [Authorize(Roles = "Read,Write")]
         public async Task<IActionResult> UpdateBookById(int id, [FromBody] AddBookRequestDTO bookDTO)
         {
             var updated = await _bookRepository.UpdateBookByIdAsync(id, bookDTO);
@@ -68,6 +84,7 @@ namespace WebAPI_simple.Controllers
         }
 
         [HttpDelete("delete-book-by-id/{id}")]
+        [Authorize(Roles = "Read,Write")]
         public async Task<IActionResult> DeleteBookById(int id)
         {
             var deleted = await _bookRepository.DeleteBookByIdAsync(id);

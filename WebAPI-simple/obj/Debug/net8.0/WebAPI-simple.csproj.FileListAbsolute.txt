@@ -170,3 +170,13 @@ D:\TH\LTW2\WebAPI-simple\WebAPI-simple\obj\Debug\net8.0\WebAPI-simple.pdb
 D:\TH\LTW2\WebAPI-simple\WebAPI-simple\obj\Debug\net8.0\WebAPI-simple.genruntimeconfig.cache
 D:\TH\LTW2\WebAPI-simple\WebAPI-simple\obj\Debug\net8.0\ref\WebAPI-simple.dll
 D:\TH\LTW2\WebAPI-simple\WebAPI-simple\obj\Debug\net8.0\WebAPI-simple.sourcelink.json
+D:\TH\LTW2\WebAPI-simple\WebAPI-simple\bin\Debug\net8.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+D:\TH\LTW2\WebAPI-simple\WebAPI-simple\bin\Debug\net8.0\Microsoft.AspNetCore.Cryptography.Internal.dll
+D:\TH\LTW2\WebAPI-simple\WebAPI-simple\bin\Debug\net8.0\Microsoft.AspNetCore.Cryptography.KeyDerivation.dll
+D:\TH\LTW2\WebAPI-simple\WebAPI-simple\bin\Debug\net8.0\Microsoft.AspNetCore.Identity.EntityFrameworkCore.dll
+D:\TH\LTW2\WebAPI-simple\WebAPI-simple\bin\Debug\net8.0\Microsoft.Extensions.Identity.Core.dll
+D:\TH\LTW2\WebAPI-simple\WebAPI-simple\bin\Debug\net8.0\Microsoft.Extensions.Identity.Stores.dll
+D:\TH\LTW2\WebAPI-simple\WebAPI-simple\bin\Debug\net8.0\Serilog.dll
+D:\TH\LTW2\WebAPI-simple\WebAPI-simple\bin\Debug\net8.0\Serilog.Extensions.Logging.dll
+D:\TH\LTW2\WebAPI-simple\WebAPI-simple\bin\Debug\net8.0\Serilog.Sinks.Console.dll
+D:\TH\LTW2\WebAPI-simple\WebAPI-simple\bin\Debug\net8.0\Serilog.Sinks.File.dll
