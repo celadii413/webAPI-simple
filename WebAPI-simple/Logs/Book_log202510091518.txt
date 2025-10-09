@@ -1,0 +1,47 @@
+2025-10-09 15:18:21.138 +07:00 [INF] Request starting HTTP/1.1 POST https://localhost:7005/api/Books/add-book - application/json; charset=utf-8 202
+2025-10-09 15:18:21.153 +07:00 [INF] Executing endpoint 'WebAPI_simple.Controllers.BooksController.AddBook (WebAPI-simple)'
+2025-10-09 15:18:21.162 +07:00 [INF] Route matched with {action = "AddBook", controller = "Books"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] AddBook(WebAPI_simple.Models.DTO.AddBookRequestDTO) on controller WebAPI_simple.Controllers.BooksController (WebAPI-simple).
+2025-10-09 15:18:21.169 +07:00 [INF] Executing BadRequestObjectResult, writing value of type 'Microsoft.AspNetCore.Mvc.ValidationProblemDetails'.
+2025-10-09 15:18:21.173 +07:00 [INF] Executed action WebAPI_simple.Controllers.BooksController.AddBook (WebAPI-simple) in 7.562ms
+2025-10-09 15:18:21.176 +07:00 [INF] Executed endpoint 'WebAPI_simple.Controllers.BooksController.AddBook (WebAPI-simple)'
+2025-10-09 15:18:21.179 +07:00 [INF] Request finished HTTP/1.1 POST https://localhost:7005/api/Books/add-book - 400 null application/problem+json; charset=utf-8 41.0599ms
+2025-10-09 15:18:21.231 +07:00 [INF] Request starting HTTP/1.1 GET https://localhost:7005/api/Authors/get-all-authors - null null
+2025-10-09 15:18:21.237 +07:00 [INF] Executing endpoint 'WebAPI_simple.Controllers.AuthorsController.GetAllAuthors (WebAPI-simple)'
+2025-10-09 15:18:21.239 +07:00 [INF] Route matched with {action = "GetAllAuthors", controller = "Authors"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAllAuthors() on controller WebAPI_simple.Controllers.AuthorsController (WebAPI-simple).
+2025-10-09 15:18:21.261 +07:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [a].[Id], [a].[FullName]
+FROM [Authors] AS [a]
+2025-10-09 15:18:21.266 +07:00 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[WebAPI_simple.Models.DTO.AuthorDTO, WebAPI-simple, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-10-09 15:18:21.268 +07:00 [INF] Executed action WebAPI_simple.Controllers.AuthorsController.GetAllAuthors (WebAPI-simple) in 26.5286ms
+2025-10-09 15:18:21.270 +07:00 [INF] Executed endpoint 'WebAPI_simple.Controllers.AuthorsController.GetAllAuthors (WebAPI-simple)'
+2025-10-09 15:18:21.272 +07:00 [INF] Request finished HTTP/1.1 GET https://localhost:7005/api/Authors/get-all-authors - 200 null application/json; charset=utf-8 40.9586ms
+2025-10-09 15:18:21.279 +07:00 [INF] Request starting HTTP/1.1 GET https://localhost:7005/api/Publishers/get-all-publishers - null null
+2025-10-09 15:18:21.283 +07:00 [INF] Executing endpoint 'WebAPI_simple.Controllers.PublishersController.GetAllPublishers (WebAPI-simple)'
+2025-10-09 15:18:21.285 +07:00 [INF] Route matched with {action = "GetAllPublishers", controller = "Publishers"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAllPublishers() on controller WebAPI_simple.Controllers.PublishersController (WebAPI-simple).
+2025-10-09 15:18:21.308 +07:00 [INF] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [p].[Id], [p].[Name]
+FROM [Publishers] AS [p]
+2025-10-09 15:18:21.313 +07:00 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[WebAPI_simple.Models.DTO.PublisherDTO, WebAPI-simple, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-10-09 15:18:21.316 +07:00 [INF] Executed action WebAPI_simple.Controllers.PublishersController.GetAllPublishers (WebAPI-simple) in 27.6244ms
+2025-10-09 15:18:21.318 +07:00 [INF] Executed endpoint 'WebAPI_simple.Controllers.PublishersController.GetAllPublishers (WebAPI-simple)'
+2025-10-09 15:18:21.320 +07:00 [INF] Request finished HTTP/1.1 GET https://localhost:7005/api/Publishers/get-all-publishers - 200 null application/json; charset=utf-8 40.6375ms
+2025-10-09 15:18:53.636 +07:00 [INF] Request starting HTTP/1.1 GET https://localhost:7005/api/Authors/get-all-authors - null null
+2025-10-09 15:18:53.647 +07:00 [INF] Executing endpoint 'WebAPI_simple.Controllers.AuthorsController.GetAllAuthors (WebAPI-simple)'
+2025-10-09 15:18:53.648 +07:00 [INF] Route matched with {action = "GetAllAuthors", controller = "Authors"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAllAuthors() on controller WebAPI_simple.Controllers.AuthorsController (WebAPI-simple).
+2025-10-09 15:18:53.711 +07:00 [INF] Executed DbCommand (10ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [a].[Id], [a].[FullName]
+FROM [Authors] AS [a]
+2025-10-09 15:18:53.715 +07:00 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[WebAPI_simple.Models.DTO.AuthorDTO, WebAPI-simple, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-10-09 15:18:53.718 +07:00 [INF] Executed action WebAPI_simple.Controllers.AuthorsController.GetAllAuthors (WebAPI-simple) in 67.1898ms
+2025-10-09 15:18:53.721 +07:00 [INF] Executed endpoint 'WebAPI_simple.Controllers.AuthorsController.GetAllAuthors (WebAPI-simple)'
+2025-10-09 15:18:53.723 +07:00 [INF] Request finished HTTP/1.1 GET https://localhost:7005/api/Authors/get-all-authors - 200 null application/json; charset=utf-8 87.1117ms
+2025-10-09 15:18:53.731 +07:00 [INF] Request starting HTTP/1.1 GET https://localhost:7005/api/Publishers/get-all-publishers - null null
+2025-10-09 15:18:53.736 +07:00 [INF] Executing endpoint 'WebAPI_simple.Controllers.PublishersController.GetAllPublishers (WebAPI-simple)'
+2025-10-09 15:18:53.737 +07:00 [INF] Route matched with {action = "GetAllPublishers", controller = "Publishers"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAllPublishers() on controller WebAPI_simple.Controllers.PublishersController (WebAPI-simple).
+2025-10-09 15:18:53.789 +07:00 [INF] Executed DbCommand (32ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [p].[Id], [p].[Name]
+FROM [Publishers] AS [p]
+2025-10-09 15:18:53.794 +07:00 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[WebAPI_simple.Models.DTO.PublisherDTO, WebAPI-simple, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-10-09 15:18:53.797 +07:00 [INF] Executed action WebAPI_simple.Controllers.PublishersController.GetAllPublishers (WebAPI-simple) in 56.5137ms
+2025-10-09 15:18:53.799 +07:00 [INF] Executed endpoint 'WebAPI_simple.Controllers.PublishersController.GetAllPublishers (WebAPI-simple)'
+2025-10-09 15:18:53.801 +07:00 [INF] Request finished HTTP/1.1 GET https://localhost:7005/api/Publishers/get-all-publishers - 200 null application/json; charset=utf-8 70.7205ms

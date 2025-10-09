@@ -77,10 +77,10 @@ namespace WebAPI_simple.Repositories
 
         public async Task<BookWithAuthorAndPublisherDTO> AddBookAsync(AddBookRequestDTO addBookRequestDTO)
         {
-            // Kiểm tra Title không được để trống và không chứa ký tự đặc biệt
-            if (string.IsNullOrWhiteSpace(addBookRequestDTO.Title) || !System.Text.RegularExpressions.Regex.IsMatch(addBookRequestDTO.Title, @"^[\p{L}\p{N}\p{P}\p{Zs}]+$"))
+            // Kiểm tra Title không được để trống
+            if (string.IsNullOrWhiteSpace(addBookRequestDTO.Title))
             {
-                throw new Exception("Book Title cannot be empty or contain special characters");
+                throw new Exception("Book Title cannot be empty");
             }
 
             // Nhà xuất bản phải tồn tại

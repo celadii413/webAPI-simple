@@ -38,23 +38,26 @@ namespace WebAPI_simple.Middlewares
 
                     // Kiểm tra các trường bắt buộc
                     // Title
-                    if (!root.TryGetProperty("title", out var title) || string.IsNullOrWhiteSpace(title.GetString()))
+                    if (!root.EnumerateObject().Any(p => p.Name.Equals("title", StringComparison.OrdinalIgnoreCase) && !string.IsNullOrWhiteSpace(p.Value.GetString())))
                     {
                         await WriteError(context, 400, "Book Title cannot be empty or contain special characters");
                         return;
                     }
 
                     // PublisherID
-                    if (!root.TryGetProperty("publisherID", out var publisherId) || publisherId.GetInt32() <= 0)
+                    var publisherProperty = root.EnumerateObject()
+                    .FirstOrDefault(p => p.Name.Equals("publisherID", StringComparison.OrdinalIgnoreCase));
+                    if (publisherProperty.Value.ValueKind == JsonValueKind.Undefined || publisherProperty.Value.GetInt32() <= 0)
                     {
                         await WriteError(context, 400, "PublisherId does not exist");
                         return;
                     }
 
                     // AuthorIds
-                    if (!root.TryGetProperty("authorIds", out var authors) ||
-                        authors.ValueKind != JsonValueKind.Array ||
-                        authors.GetArrayLength() == 0)
+                    var authorProperty = root.EnumerateObject()
+                    .FirstOrDefault(p => p.Name.Equals("authorIds", StringComparison.OrdinalIgnoreCase));
+
+                    if (authorProperty.Value.ValueKind != JsonValueKind.Array || authorProperty.Value.GetArrayLength() == 0)
                     {
                         await WriteError(context, 400, "Missing or invalid 'AuthorIds'");
                         return;

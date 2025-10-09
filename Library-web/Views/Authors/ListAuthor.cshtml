@@ -1,0 +1,10 @@
+﻿@model Library_web.Models.DTO.AuthorDTO
+
+<link rel="stylesheet" href="~/css/author.css" />
+
+<h2>Thông tin tác giả</h2>
+
+<p><strong>ID:</strong> @Model.Id</p>
+<p><strong>Tên tác giả:</strong> @Model.FullName</p>
+
+<a asp-controller="Authors" asp-action="Index" class="btn btn-secondary">Quay lại danh sách</a>

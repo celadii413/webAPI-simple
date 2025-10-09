@@ -13,7 +13,7 @@ namespace WebAPI_simple.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    [Authorize]
+    //[Authorize]
     public class BooksController : ControllerBase
     {
         private readonly AppDbContext _dbContext;
@@ -29,7 +29,7 @@ namespace WebAPI_simple.Controllers
 
         //GET: /api/Books/get-all-books?filterOn=Name&filterQuery=Track
         [HttpGet("get-all-books")]
-        [Authorize(Roles = "Read")]
+        //[Authorize(Roles = "Read")]
         public async Task<IActionResult> GetAll([FromQuery] string? filterOn, [FromQuery] string? filterQuery, 
             [FromQuery] string? sortBy, [FromQuery] bool isAscending,
             [FromQuery] int pageNumber = 1, [FromQuery] int pageSize = 100)
@@ -56,7 +56,7 @@ namespace WebAPI_simple.Controllers
 
         [HttpPost("add-book")]
         [ValidateModel]
-        [Authorize(Roles = "Read,Write")]
+        //[Authorize(Roles = "Read,Write")]
         public async Task<IActionResult> AddBook([FromBody] AddBookRequestDTO addBookRequestDTO)
         {
             try
@@ -75,7 +75,7 @@ namespace WebAPI_simple.Controllers
 
 
         [HttpPut("update-book-by-id/{id}")]
-        [Authorize(Roles = "Read,Write")]
+        //[Authorize(Roles = "Read,Write")]
         public async Task<IActionResult> UpdateBookById(int id, [FromBody] AddBookRequestDTO bookDTO)
         {
             var updated = await _bookRepository.UpdateBookByIdAsync(id, bookDTO);
@@ -84,7 +84,7 @@ namespace WebAPI_simple.Controllers
         }
 
         [HttpDelete("delete-book-by-id/{id}")]
-        [Authorize(Roles = "Read,Write")]
+        //[Authorize(Roles = "Read,Write")]
         public async Task<IActionResult> DeleteBookById(int id)
         {
             var deleted = await _bookRepository.DeleteBookByIdAsync(id);

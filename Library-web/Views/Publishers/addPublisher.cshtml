@@ -1,0 +1,11 @@
+﻿@model Library_web.Models.DTO.addPublisherDTO
+
+<link rel="stylesheet" href="~/css/publisher.css" />
+
+<h2>Add new Publisher</h2>
+
+<form asp-controller="Publishers" asp-action="addPublisher" method="post">
+    <label>Name</label><br />
+    <input type="text" asp-for="Name" class="form-control" /><br />
+    <input type="submit" value="Add" class="btn btn-success" />
+</form>

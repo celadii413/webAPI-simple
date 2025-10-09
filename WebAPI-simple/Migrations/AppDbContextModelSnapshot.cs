@@ -37,6 +37,58 @@ namespace WebAPI_simple.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Authors");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            FullName = "Nguyễn Nhật Ánh"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            FullName = "Tô Hoài"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            FullName = "Nam Cao"
+                        },
+                        new
+                        {
+                            Id = 4,
+                            FullName = "Nguyễn Ngọc Tư"
+                        },
+                        new
+                        {
+                            Id = 5,
+                            FullName = "Vũ Trọng Phụng"
+                        },
+                        new
+                        {
+                            Id = 6,
+                            FullName = "Nguyễn Minh Châu"
+                        },
+                        new
+                        {
+                            Id = 7,
+                            FullName = "Hemingway"
+                        },
+                        new
+                        {
+                            Id = 8,
+                            FullName = "J.K. Rowling"
+                        },
+                        new
+                        {
+                            Id = 9,
+                            FullName = "George Orwell"
+                        },
+                        new
+                        {
+                            Id = 10,
+                            FullName = "Haruki Murakami"
+                        });
                 });
 
             modelBuilder.Entity("WebAPI_simple.Models.Domain.Book", b =>
@@ -82,6 +134,121 @@ namespace WebAPI_simple.Migrations
                     b.HasIndex("PublisherID");
 
                     b.ToTable("Books");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            CoverUrl = "https://i.pinimg.com/474x/1c/71/55/1c7155f928b1b9dcf71f054be08c7f3c.jpg",
+                            DateAdded = new DateTime(2025, 10, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DateRead = new DateTime(2025, 10, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Description = "Câu chuyện tuổi thơ hồn nhiên, cảm động của hai anh em Thiều và Tường.",
+                            Genre = "Tuổi thơ",
+                            IsRead = true,
+                            PublisherID = 1,
+                            Rate = 5,
+                            Title = "Tôi Thấy Hoa Vàng Trên Cỏ Xanh"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            CoverUrl = "https://i.pinimg.com/474x/1c/71/55/1c7155f928b1b9dcf71f054be08c7f3c.jpg",
+                            DateAdded = new DateTime(2025, 9, 20, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DateRead = new DateTime(2025, 9, 20, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Description = "Hành trình trưởng thành và khám phá thế giới của Dế Mèn.",
+                            Genre = "Thiếu nhi",
+                            IsRead = true,
+                            PublisherID = 2,
+                            Rate = 4,
+                            Title = "Dế Mèn Phiêu Lưu Ký"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            CoverUrl = "https://i.pinimg.com/474x/1c/71/55/1c7155f928b1b9dcf71f054be08c7f3c.jpg",
+                            DateAdded = new DateTime(2025, 8, 15, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Description = "Bi kịch của người nông dân bị xã hội tha hoá trong thời kỳ phong kiến.",
+                            Genre = "Hiện thực phê phán",
+                            IsRead = false,
+                            PublisherID = 3,
+                            Title = "Chí Phèo"
+                        },
+                        new
+                        {
+                            Id = 4,
+                            CoverUrl = "https://i.pinimg.com/474x/1c/71/55/1c7155f928b1b9dcf71f054be08c7f3c.jpg",
+                            DateAdded = new DateTime(2025, 8, 10, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DateRead = new DateTime(2025, 8, 10, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Description = "Những phận người lầm lũi và khát vọng sống nơi miền sông nước.",
+                            Genre = "Tâm lý xã hội",
+                            IsRead = true,
+                            PublisherID = 4,
+                            Rate = 5,
+                            Title = "Cánh Đồng Bất Tận"
+                        },
+                        new
+                        {
+                            Id = 5,
+                            CoverUrl = "https://i.pinimg.com/474x/1c/71/55/1c7155f928b1b9dcf71f054be08c7f3c.jpg",
+                            DateAdded = new DateTime(2025, 7, 15, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DateRead = new DateTime(2025, 7, 15, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Description = "Câu chuyện về số phận con người và những giá trị bình dị của cuộc sống.",
+                            Genre = "Tâm lý xã hội",
+                            IsRead = true,
+                            PublisherID = 3,
+                            Rate = 4,
+                            Title = "Bến Quê"
+                        },
+                        new
+                        {
+                            Id = 6,
+                            CoverUrl = "https://i.pinimg.com/474x/1c/71/55/1c7155f928b1b9dcf71f054be08c7f3c.jpg",
+                            DateAdded = new DateTime(2025, 6, 10, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DateRead = new DateTime(2025, 6, 10, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Description = "Câu chuyện về nghị lực phi thường của con người trước thiên nhiên khắc nghiệt.",
+                            Genre = "Văn học nước ngoài",
+                            IsRead = true,
+                            PublisherID = 4,
+                            Rate = 5,
+                            Title = "Ông Già Và Biển Cả"
+                        },
+                        new
+                        {
+                            Id = 7,
+                            CoverUrl = "https://i.pinimg.com/474x/1c/71/55/1c7155f928b1b9dcf71f054be08c7f3c.jpg",
+                            DateAdded = new DateTime(2025, 5, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DateRead = new DateTime(2025, 5, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Description = "Cuộc phiêu lưu đầu tiên của cậu bé phù thủy Harry Potter tại Hogwarts.",
+                            Genre = "Giả tưởng",
+                            IsRead = true,
+                            PublisherID = 2,
+                            Rate = 5,
+                            Title = "Harry Potter và Hòn Đá Phù Thủy"
+                        },
+                        new
+                        {
+                            Id = 8,
+                            CoverUrl = "https://i.pinimg.com/474x/1c/71/55/1c7155f928b1b9dcf71f054be08c7f3c.jpg",
+                            DateAdded = new DateTime(2025, 4, 20, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Description = "Một xã hội toàn trị nơi mọi hành động đều bị giám sát.",
+                            Genre = "Chính trị - Xã hội",
+                            IsRead = false,
+                            PublisherID = 5,
+                            Title = "1984"
+                        },
+                        new
+                        {
+                            Id = 9,
+                            CoverUrl = "https://i.pinimg.com/474x/1c/71/55/1c7155f928b1b9dcf71f054be08c7f3c.jpg",
+                            DateAdded = new DateTime(2025, 3, 18, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DateRead = new DateTime(2025, 3, 18, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Description = "Hành trình tuổi trẻ đầy mất mát và khát vọng sống.",
+                            Genre = "Tâm lý - Lãng mạn",
+                            IsRead = true,
+                            PublisherID = 1,
+                            Rate = 4,
+                            Title = "Rừng Na Uy"
+                        });
                 });
 
             modelBuilder.Entity("WebAPI_simple.Models.Domain.Book_Author", b =>
@@ -105,6 +272,93 @@ namespace WebAPI_simple.Migrations
                     b.HasIndex("BookId");
 
                     b.ToTable("Book_Authors");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            AuthorId = 1,
+                            BookId = 1
+                        },
+                        new
+                        {
+                            Id = 2,
+                            AuthorId = 2,
+                            BookId = 2
+                        },
+                        new
+                        {
+                            Id = 3,
+                            AuthorId = 3,
+                            BookId = 3
+                        },
+                        new
+                        {
+                            Id = 4,
+                            AuthorId = 4,
+                            BookId = 4
+                        },
+                        new
+                        {
+                            Id = 5,
+                            AuthorId = 6,
+                            BookId = 5
+                        },
+                        new
+                        {
+                            Id = 6,
+                            AuthorId = 7,
+                            BookId = 6
+                        },
+                        new
+                        {
+                            Id = 7,
+                            AuthorId = 8,
+                            BookId = 7
+                        },
+                        new
+                        {
+                            Id = 8,
+                            AuthorId = 9,
+                            BookId = 8
+                        },
+                        new
+                        {
+                            Id = 9,
+                            AuthorId = 10,
+                            BookId = 9
+                        });
+                });
+
+            modelBuilder.Entity("WebAPI_simple.Models.Domain.Image", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("FileDescription")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("FileExtension")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("FileName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("FilePath")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<long>("FileSizeInBytes")
+                        .HasColumnType("bigint");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Images");
                 });
 
             modelBuilder.Entity("WebAPI_simple.Models.Domain.Publisher", b =>
@@ -122,6 +376,33 @@ namespace WebAPI_simple.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Publishers");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Name = "NXB Trẻ"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Name = "NXB Kim Đồng"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            Name = "NXB Văn Học"
+                        },
+                        new
+                        {
+                            Id = 4,
+                            Name = "NXB Hội Nhà Văn"
+                        },
+                        new
+                        {
+                            Id = 5,
+                            Name = "NXB Phụ Nữ Việt Nam"
+                        });
                 });
 
             modelBuilder.Entity("WebAPI_simple.Models.Domain.Book", b =>

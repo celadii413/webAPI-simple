@@ -1,0 +1,36 @@
+﻿@model Library_web.Models.DTO.addBookDTO
+
+@{
+    var listAuthor = ViewBag.ListAuthor;
+    var listPublisher = ViewBag.ListPublisher;
+}
+
+<link rel="stylesheet" href="~/css/addBook.css" />
+
+<h2>Add new Book</h2>
+
+<form asp-controller="Books" asp-action="addBook" method="post">
+    <label>Title</label><br />
+    <input type="text" name="title" asp-for="Title" /><span asp-validation-for="Title" class="text-danger"></span><br />
+    <label>Description</label>
+    <input type="text" name="description" asp-for="Description" /><br />
+    <label>IsRead</label><input type="radio" name="isRead" asp-for="IsRead" value="True" /> Yes<input type="radio" name="isRead" asp-for="IsRead" value="False" /> No<br />
+    <label>DateRead</label><input type="date" name="dateRead" asp-for="DateRead" /><br />
+    <label>Rate</label><input type="number" name="rate" asp-for="Rate" /><br />
+    <label>Genre</label><input type="text" name="genre" asp-for="Genre" /><br />
+    <label>Cover Url</label><input type="text" name="coverUrl" asp-for="CoverUrl" /><br />
+    <label>DateAdded</label><input type="date" name="dateAdded" asp-for="DateAdded" /><br />
+    <label>Publisher</label><select name="PublisherID">
+        @foreach (var item in listPublisher)
+        {
+            <option value="@item.Id">@item.Name</option>
+        }
+    </select>
+    <label>Authors</label><select name="AuthorIds" multiple>
+        @foreach (var item in listAuthor)
+        {
+            <option value="@item.Id">@item.FullName</option>
+        }
+    </select>
+    <input type="submit" />
+</form>

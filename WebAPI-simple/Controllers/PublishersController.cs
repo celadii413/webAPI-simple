@@ -10,7 +10,7 @@ namespace WebAPI_simple.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    [Authorize]
+    //[Authorize]
     public class PublishersController : ControllerBase
     {
         private readonly IPublisherRepository _publisherRepository;

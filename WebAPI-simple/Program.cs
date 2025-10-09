@@ -68,11 +68,14 @@ builder.Services.AddDbContext<AppDbContext>(options =>
 builder.Services.AddDbContext<BookAuthDbContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("BookAuthConnection")));
 
+builder.Services.AddHttpContextAccessor();
+
 // Repository pattern
 builder.Services.AddScoped<IBookRepository, SQLBookRepository>();
 builder.Services.AddScoped<IAuthorRepository, SQLAuthorRepository>();
 builder.Services.AddScoped<IPublisherRepository, SQLPublisherRepository>();
 builder.Services.AddScoped<ITokenRepository, TokenRepository>();
+builder.Services.AddScoped<IImageRepository, LocalImageRepository>();
 
 // Identity
 builder.Services.AddIdentityCore<IdentityUser>()

@@ -1,0 +1,11 @@
+2025-10-08 20:19:12.881 +07:00 [INF] Request starting HTTP/1.1 GET https://localhost:7005/api/Publishers/get-publisher-by-id/5 - null null
+2025-10-08 20:19:12.900 +07:00 [INF] Executing endpoint 'WebAPI_simple.Controllers.PublishersController.GetPublisherById (WebAPI-simple)'
+2025-10-08 20:19:12.902 +07:00 [INF] Route matched with {action = "GetPublisherById", controller = "Publishers"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetPublisherById(Int32) on controller WebAPI_simple.Controllers.PublishersController (WebAPI-simple).
+2025-10-08 20:19:12.923 +07:00 [INF] Executed DbCommand (3ms) [Parameters=[@__id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [p].[Name]
+FROM [Publishers] AS [p]
+WHERE [p].[Id] = @__id_0
+2025-10-08 20:19:12.929 +07:00 [INF] Executing OkObjectResult, writing value of type 'WebAPI_simple.Models.DTO.PublisherNoIdDTO'.
+2025-10-08 20:19:12.932 +07:00 [INF] Executed action WebAPI_simple.Controllers.PublishersController.GetPublisherById (WebAPI-simple) in 26.5776ms
+2025-10-08 20:19:12.934 +07:00 [INF] Executed endpoint 'WebAPI_simple.Controllers.PublishersController.GetPublisherById (WebAPI-simple)'
+2025-10-08 20:19:12.937 +07:00 [INF] Request finished HTTP/1.1 GET https://localhost:7005/api/Publishers/get-publisher-by-id/5 - 200 null application/json; charset=utf-8 55.4758ms

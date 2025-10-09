@@ -1,0 +1,10 @@
+﻿@model Library_web.Models.DTO.PublisherDTO
+
+<link rel="stylesheet" href="~/css/publisher.css" />
+
+<h2>Thông tin nhà xuất bản</h2>
+
+<p><strong>ID:</strong> @Model.Id</p>
+<p><strong>Tên NXB:</strong> @Model.Name</p>
+
+<a asp-controller="Publishers" asp-action="Index" class="btn btn-secondary">Quay lại danh sách</a>

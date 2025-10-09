@@ -1,0 +1,11 @@
+﻿@model Library_web.Models.DTO.addAuthorDTO
+
+<link rel="stylesheet" href="~/css/author.css" />
+
+<h2>Add new Author</h2>
+
+<form asp-controller="Authors" asp-action="addAuthor" method="post">
+    <label>Full Name</label><br />
+    <input type="text" asp-for="FullName" class="form-control" /><br />
+    <input type="submit" value="Add" class="btn btn-success" />
+</form>

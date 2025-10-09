@@ -1,0 +1,197 @@
+2025-10-09 15:33:07.054 +07:00 [INF] User profile is available. Using 'C:\Users\Viv\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-10-09 15:33:07.438 +07:00 [INF] Now listening on: https://localhost:7005
+2025-10-09 15:33:07.441 +07:00 [INF] Now listening on: http://localhost:5020
+2025-10-09 15:33:07.758 +07:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-10-09 15:33:07.760 +07:00 [INF] Hosting environment: Development
+2025-10-09 15:33:07.762 +07:00 [INF] Content root path: D:\TH\LTW2\WebAPI-simple\WebAPI-simple
+2025-10-09 15:33:08.322 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7005/swagger - null null
+2025-10-09 15:33:08.486 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7005/swagger - 301 0 null 173.3933ms
+2025-10-09 15:33:08.632 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7005/swagger/index.html - null null
+2025-10-09 15:33:08.734 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7005/swagger/index.html - 200 null text/html;charset=utf-8 102.5802ms
+2025-10-09 15:33:08.783 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7005/swagger/swagger-ui.css - null null
+2025-10-09 15:33:08.787 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7005/_framework/aspnetcore-browser-refresh.js - null null
+2025-10-09 15:33:08.789 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7005/_vs/browserLink - null null
+2025-10-09 15:33:08.803 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7005/_framework/aspnetcore-browser-refresh.js - 200 16474 application/javascript; charset=utf-8 15.9932ms
+2025-10-09 15:33:08.809 +07:00 [INF] Sending file. Request path: '/swagger-ui.css'. Physical path: 'N/A'
+2025-10-09 15:33:08.813 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7005/swagger/swagger-ui.css - 499 152034 text/css 29.7591ms
+2025-10-09 15:33:08.854 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7005/_vs/browserLink - 200 null text/javascript; charset=UTF-8 64.8836ms
+2025-10-09 15:33:08.933 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7005/swagger/favicon-32x32.png - null null
+2025-10-09 15:33:08.939 +07:00 [INF] Sending file. Request path: '/favicon-32x32.png'. Physical path: 'N/A'
+2025-10-09 15:33:08.941 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7005/swagger/favicon-32x32.png - 499 628 image/png 8.8328ms
+2025-10-09 15:33:08.993 +07:00 [INF] Request starting HTTP/1.1 GET https://localhost:7005/api/Books/get-all-books?filterOn=&filterQuery=&sortBy=&isAscending=True - null null
+2025-10-09 15:33:08.998 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7005/swagger/v1/swagger.json - null null
+2025-10-09 15:33:09.074 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7005/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 76.6513ms
+2025-10-09 15:33:09.094 +07:00 [INF] Executing endpoint 'WebAPI_simple.Controllers.BooksController.GetAll (WebAPI-simple)'
+2025-10-09 15:33:09.134 +07:00 [INF] Route matched with {action = "GetAll", controller = "Books"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAll(System.String, System.String, System.String, Boolean, Int32, Int32) on controller WebAPI_simple.Controllers.BooksController (WebAPI-simple).
+2025-10-09 15:33:09.337 +07:00 [INF] GetAll Book Action method was invoked
+2025-10-09 15:33:09.339 +07:00 [WRN] This is a warning log
+2025-10-09 15:33:09.341 +07:00 [ERR] This is an error log
+2025-10-09 15:33:10.416 +07:00 [WRN] The query uses a row limiting operator ('Skip'/'Take') without an 'OrderBy' operator. This may lead to unpredictable results. If the 'Distinct' operator is used after 'OrderBy', then make sure to use the 'OrderBy' operator after 'Distinct' as the ordering would otherwise get erased.
+2025-10-09 15:33:10.420 +07:00 [WRN] The query uses a row limiting operator ('Skip'/'Take') without an 'OrderBy' operator. This may lead to unpredictable results. If the 'Distinct' operator is used after 'OrderBy', then make sure to use the 'OrderBy' operator after 'Distinct' as the ordering would otherwise get erased.
+2025-10-09 15:33:11.099 +07:00 [INF] Executed DbCommand (84ms) [Parameters=[@__p_0='?' (DbType = Int32), @__p_1='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [b0].[Id], [b0].[Title], [b0].[Description], [b0].[IsRead], CASE
+    WHEN [b0].[IsRead] = CAST(1 AS bit) THEN [b0].[DateRead]
+END, CASE
+    WHEN [b0].[IsRead] = CAST(1 AS bit) THEN [b0].[Rate]
+END, [b0].[Genre], [b0].[CoverUrl], [p].[Name], [p].[Id], [s].[FullName], [s].[Id], [s].[Id0]
+FROM (
+    SELECT [b].[Id], [b].[CoverUrl], [b].[DateRead], [b].[Description], [b].[Genre], [b].[IsRead], [b].[PublisherID], [b].[Rate], [b].[Title]
+    FROM [Books] AS [b]
+    ORDER BY (SELECT 1)
+    OFFSET @__p_0 ROWS FETCH NEXT @__p_1 ROWS ONLY
+) AS [b0]
+INNER JOIN [Publishers] AS [p] ON [b0].[PublisherID] = [p].[Id]
+LEFT JOIN (
+    SELECT [a].[FullName], [b1].[Id], [a].[Id] AS [Id0], [b1].[BookId]
+    FROM [Book_Authors] AS [b1]
+    INNER JOIN [Authors] AS [a] ON [b1].[AuthorId] = [a].[Id]
+) AS [s] ON [b0].[Id] = [s].[BookId]
+ORDER BY [b0].[Id], [p].[Id], [s].[Id]
+2025-10-09 15:33:11.165 +07:00 [INF] Finished GetAllBook request with data [{"Id":1,"Title":"T\u00F4i Th\u1EA5y Hoa V\u00E0ng Tr\u00EAn C\u1ECF Xanh","Description":"C\u00E2u chuy\u1EC7n tu\u1ED5i th\u01A1 h\u1ED3n nhi\u00EAn, c\u1EA3m \u0111\u1ED9ng c\u1EE7a hai anh em Thi\u1EC1u v\u00E0 T\u01B0\u1EDDng.","IsRead":true,"DateRead":"2025-10-07T00:00:00","Rate":5,"Genre":"Tu\u1ED5i th\u01A1","CoverUrl":"https://i.pinimg.com/474x/1c/71/55/1c7155f928b1b9dcf71f054be08c7f3c.jpg","DateAdded":"0001-01-01T00:00:00","PublisherName":"NXB Tr\u1EBB","AuthorNames":["Nguy\u1EC5n Nh\u1EADt \u00C1nh"]},{"Id":2,"Title":"D\u1EBF M\u00E8n Phi\u00EAu L\u01B0u K\u00FD","Description":"H\u00E0nh tr\u00ECnh tr\u01B0\u1EDFng th\u00E0nh v\u00E0 kh\u00E1m ph\u00E1 th\u1EBF gi\u1EDBi c\u1EE7a D\u1EBF M\u00E8n.","IsRead":true,"DateRead":"2025-09-20T00:00:00","Rate":4,"Genre":"Thi\u1EBFu nhi","CoverUrl":"https://i.pinimg.com/474x/1c/71/55/1c7155f928b1b9dcf71f054be08c7f3c.jpg","DateAdded":"0001-01-01T00:00:00","PublisherName":"NXB Kim \u0110\u1ED3ng","AuthorNames":["T\u00F4 Ho\u00E0i"]},{"Id":3,"Title":"Ch\u00ED Ph\u00E8o","Description":"Bi k\u1ECBch c\u1EE7a ng\u01B0\u1EDDi n\u00F4ng d\u00E2n b\u1ECB x\u00E3 h\u1ED9i tha ho\u00E1 trong th\u1EDDi k\u1EF3 phong ki\u1EBFn.","IsRead":false,"DateRead":null,"Rate":null,"Genre":"Hi\u1EC7n th\u1EF1c ph\u00EA ph\u00E1n","CoverUrl":"https://i.pinimg.com/474x/1c/71/55/1c7155f928b1b9dcf71f054be08c7f3c.jpg","DateAdded":"0001-01-01T00:00:00","PublisherName":"NXB V\u0103n H\u1ECDc","AuthorNames":["Nam Cao"]},{"Id":4,"Title":"C\u00E1nh \u0110\u1ED3ng B\u1EA5t T\u1EADn","Description":"Nh\u1EEFng ph\u1EADn ng\u01B0\u1EDDi l\u1EA7m l\u0169i v\u00E0 kh\u00E1t v\u1ECDng s\u1ED1ng n\u01A1i mi\u1EC1n s\u00F4ng n\u01B0\u1EDBc.","IsRead":true,"DateRead":"2025-08-10T00:00:00","Rate":5,"Genre":"T\u00E2m l\u00FD x\u00E3 h\u1ED9i","CoverUrl":"https://i.pinimg.com/474x/1c/71/55/1c7155f928b1b9dcf71f054be08c7f3c.jpg","DateAdded":"0001-01-01T00:00:00","PublisherName":"NXB H\u1ED9i Nh\u00E0 V\u0103n","AuthorNames":["Nguy\u1EC5n Ng\u1ECDc T\u01B0"]},{"Id":5,"Title":"B\u1EBFn Qu\u00EA","Description":"C\u00E2u chuy\u1EC7n v\u1EC1 s\u1ED1 ph\u1EADn con ng\u01B0\u1EDDi v\u00E0 nh\u1EEFng gi\u00E1 tr\u1ECB b\u00ECnh d\u1ECB c\u1EE7a cu\u1ED9c s\u1ED1ng.","IsRead":true,"DateRead":"2025-07-15T00:00:00","Rate":4,"Genre":"T\u00E2m l\u00FD x\u00E3 h\u1ED9i","CoverUrl":"https://i.pinimg.com/474x/1c/71/55/1c7155f928b1b9dcf71f054be08c7f3c.jpg","DateAdded":"0001-01-01T00:00:00","PublisherName":"NXB V\u0103n H\u1ECDc","AuthorNames":["Nguy\u1EC5n Minh Ch\u00E2u"]},{"Id":6,"Title":"\u00D4ng Gi\u00E0 V\u00E0 Bi\u1EC3n C\u1EA3","Description":"C\u00E2u chuy\u1EC7n v\u1EC1 ngh\u1ECB l\u1EF1c phi th\u01B0\u1EDDng c\u1EE7a con ng\u01B0\u1EDDi tr\u01B0\u1EDBc thi\u00EAn nhi\u00EAn kh\u1EAFc nghi\u1EC7t.","IsRead":true,"DateRead":"2025-06-10T00:00:00","Rate":5,"Genre":"V\u0103n h\u1ECDc n\u01B0\u1EDBc ngo\u00E0i","CoverUrl":"https://i.pinimg.com/474x/1c/71/55/1c7155f928b1b9dcf71f054be08c7f3c.jpg","DateAdded":"0001-01-01T00:00:00","PublisherName":"NXB H\u1ED9i Nh\u00E0 V\u0103n","AuthorNames":["Hemingway"]},{"Id":7,"Title":"Harry Potter v\u00E0 H\u00F2n \u0110\u00E1 Ph\u00F9 Th\u1EE7y","Description":"Cu\u1ED9c phi\u00EAu l\u01B0u \u0111\u1EA7u ti\u00EAn c\u1EE7a c\u1EADu b\u00E9 ph\u00F9 th\u1EE7y Harry Potter t\u1EA1i Hogwarts.","IsRead":true,"DateRead":"2025-05-01T00:00:00","Rate":5,"Genre":"Gi\u1EA3 t\u01B0\u1EDFng","CoverUrl":"https://i.pinimg.com/474x/1c/71/55/1c7155f928b1b9dcf71f054be08c7f3c.jpg","DateAdded":"0001-01-01T00:00:00","PublisherName":"NXB Kim \u0110\u1ED3ng","AuthorNames":["J.K. Rowling"]},{"Id":8,"Title":"1984","Description":"M\u1ED9t x\u00E3 h\u1ED9i to\u00E0n tr\u1ECB n\u01A1i m\u1ECDi h\u00E0nh \u0111\u1ED9ng \u0111\u1EC1u b\u1ECB gi\u00E1m s\u00E1t.","IsRead":false,"DateRead":null,"Rate":null,"Genre":"Ch\u00EDnh tr\u1ECB - X\u00E3 h\u1ED9i","CoverUrl":"https://i.pinimg.com/474x/1c/71/55/1c7155f928b1b9dcf71f054be08c7f3c.jpg","DateAdded":"0001-01-01T00:00:00","PublisherName":"NXB Ph\u1EE5 N\u1EEF Vi\u1EC7t Nam","AuthorNames":["George Orwell"]},{"Id":9,"Title":"R\u1EEBng Na Uy","Description":"H\u00E0nh tr\u00ECnh tu\u1ED5i tr\u1EBB \u0111\u1EA7y m\u1EA5t m\u00E1t v\u00E0 kh\u00E1t v\u1ECDng s\u1ED1ng.","IsRead":true,"DateRead":"2025-03-18T00:00:00","Rate":4,"Genre":"T\u00E2m l\u00FD - L\u00E3ng m\u1EA1n","CoverUrl":"https://i.pinimg.com/474x/1c/71/55/1c7155f928b1b9dcf71f054be08c7f3c.jpg","DateAdded":"0001-01-01T00:00:00","PublisherName":"NXB Tr\u1EBB","AuthorNames":["Nam Cao"]}]
+2025-10-09 15:33:11.179 +07:00 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[WebAPI_simple.Models.DTO.BookWithAuthorAndPublisherDTO, WebAPI-simple, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-10-09 15:33:11.194 +07:00 [INF] Executed action WebAPI_simple.Controllers.BooksController.GetAll (WebAPI-simple) in 2052.6513ms
+2025-10-09 15:33:11.197 +07:00 [INF] Executed endpoint 'WebAPI_simple.Controllers.BooksController.GetAll (WebAPI-simple)'
+2025-10-09 15:33:11.209 +07:00 [INF] Request finished HTTP/1.1 GET https://localhost:7005/api/Books/get-all-books?filterOn=&filterQuery=&sortBy=&isAscending=True - 200 null application/json; charset=utf-8 2217.9957ms
+2025-10-09 15:33:13.226 +07:00 [INF] Request starting HTTP/1.1 GET https://localhost:7005/api/authors/get-all-authors - null null
+2025-10-09 15:33:13.234 +07:00 [INF] Executing endpoint 'WebAPI_simple.Controllers.AuthorsController.GetAllAuthors (WebAPI-simple)'
+2025-10-09 15:33:13.241 +07:00 [INF] Route matched with {action = "GetAllAuthors", controller = "Authors"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAllAuthors() on controller WebAPI_simple.Controllers.AuthorsController (WebAPI-simple).
+2025-10-09 15:33:13.332 +07:00 [INF] Executed DbCommand (43ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [a].[Id], [a].[FullName]
+FROM [Authors] AS [a]
+2025-10-09 15:33:13.338 +07:00 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[WebAPI_simple.Models.DTO.AuthorDTO, WebAPI-simple, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-10-09 15:33:13.343 +07:00 [INF] Executed action WebAPI_simple.Controllers.AuthorsController.GetAllAuthors (WebAPI-simple) in 99.5879ms
+2025-10-09 15:33:13.345 +07:00 [INF] Executed endpoint 'WebAPI_simple.Controllers.AuthorsController.GetAllAuthors (WebAPI-simple)'
+2025-10-09 15:33:13.347 +07:00 [INF] Request finished HTTP/1.1 GET https://localhost:7005/api/authors/get-all-authors - 200 null application/json; charset=utf-8 121.8213ms
+2025-10-09 15:33:14.076 +07:00 [INF] Request starting HTTP/1.1 GET https://localhost:7005/api/Publishers/get-all-publishers - null null
+2025-10-09 15:33:14.085 +07:00 [INF] Executing endpoint 'WebAPI_simple.Controllers.PublishersController.GetAllPublishers (WebAPI-simple)'
+2025-10-09 15:33:14.090 +07:00 [INF] Route matched with {action = "GetAllPublishers", controller = "Publishers"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAllPublishers() on controller WebAPI_simple.Controllers.PublishersController (WebAPI-simple).
+2025-10-09 15:33:14.185 +07:00 [INF] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [p].[Id], [p].[Name]
+FROM [Publishers] AS [p]
+2025-10-09 15:33:14.190 +07:00 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[WebAPI_simple.Models.DTO.PublisherDTO, WebAPI-simple, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-10-09 15:33:14.194 +07:00 [INF] Executed action WebAPI_simple.Controllers.PublishersController.GetAllPublishers (WebAPI-simple) in 101.6603ms
+2025-10-09 15:33:14.196 +07:00 [INF] Executed endpoint 'WebAPI_simple.Controllers.PublishersController.GetAllPublishers (WebAPI-simple)'
+2025-10-09 15:33:14.198 +07:00 [INF] Request finished HTTP/1.1 GET https://localhost:7005/api/Publishers/get-all-publishers - 200 null application/json; charset=utf-8 121.7718ms
+2025-10-09 15:33:17.204 +07:00 [INF] Request starting HTTP/1.1 GET https://localhost:7005/api/Publishers/get-publisher-by-id/1 - null null
+2025-10-09 15:33:17.212 +07:00 [INF] Executing endpoint 'WebAPI_simple.Controllers.PublishersController.GetPublisherById (WebAPI-simple)'
+2025-10-09 15:33:17.223 +07:00 [INF] Route matched with {action = "GetPublisherById", controller = "Publishers"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetPublisherById(Int32) on controller WebAPI_simple.Controllers.PublishersController (WebAPI-simple).
+2025-10-09 15:33:17.266 +07:00 [INF] Executed DbCommand (3ms) [Parameters=[@__id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [p].[Name]
+FROM [Publishers] AS [p]
+WHERE [p].[Id] = @__id_0
+2025-10-09 15:33:17.273 +07:00 [INF] Executing OkObjectResult, writing value of type 'WebAPI_simple.Models.DTO.PublisherNoIdDTO'.
+2025-10-09 15:33:17.276 +07:00 [INF] Executed action WebAPI_simple.Controllers.PublishersController.GetPublisherById (WebAPI-simple) in 51.2544ms
+2025-10-09 15:33:17.279 +07:00 [INF] Executed endpoint 'WebAPI_simple.Controllers.PublishersController.GetPublisherById (WebAPI-simple)'
+2025-10-09 15:33:17.281 +07:00 [INF] Request finished HTTP/1.1 GET https://localhost:7005/api/Publishers/get-publisher-by-id/1 - 200 null application/json; charset=utf-8 77.0706ms
+2025-10-09 15:33:19.787 +07:00 [INF] Request starting HTTP/1.1 GET https://localhost:7005/api/Books/get-all-books?filterOn=&filterQuery=&sortBy=&isAscending=True - null null
+2025-10-09 15:33:19.792 +07:00 [INF] Executing endpoint 'WebAPI_simple.Controllers.BooksController.GetAll (WebAPI-simple)'
+2025-10-09 15:33:19.795 +07:00 [INF] Route matched with {action = "GetAll", controller = "Books"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAll(System.String, System.String, System.String, Boolean, Int32, Int32) on controller WebAPI_simple.Controllers.BooksController (WebAPI-simple).
+2025-10-09 15:33:19.800 +07:00 [INF] GetAll Book Action method was invoked
+2025-10-09 15:33:19.802 +07:00 [WRN] This is a warning log
+2025-10-09 15:33:19.803 +07:00 [ERR] This is an error log
+2025-10-09 15:33:19.835 +07:00 [INF] Executed DbCommand (3ms) [Parameters=[@__p_0='?' (DbType = Int32), @__p_1='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [b0].[Id], [b0].[Title], [b0].[Description], [b0].[IsRead], CASE
+    WHEN [b0].[IsRead] = CAST(1 AS bit) THEN [b0].[DateRead]
+END, CASE
+    WHEN [b0].[IsRead] = CAST(1 AS bit) THEN [b0].[Rate]
+END, [b0].[Genre], [b0].[CoverUrl], [p].[Name], [p].[Id], [s].[FullName], [s].[Id], [s].[Id0]
+FROM (
+    SELECT [b].[Id], [b].[CoverUrl], [b].[DateRead], [b].[Description], [b].[Genre], [b].[IsRead], [b].[PublisherID], [b].[Rate], [b].[Title]
+    FROM [Books] AS [b]
+    ORDER BY (SELECT 1)
+    OFFSET @__p_0 ROWS FETCH NEXT @__p_1 ROWS ONLY
+) AS [b0]
+INNER JOIN [Publishers] AS [p] ON [b0].[PublisherID] = [p].[Id]
+LEFT JOIN (
+    SELECT [a].[FullName], [b1].[Id], [a].[Id] AS [Id0], [b1].[BookId]
+    FROM [Book_Authors] AS [b1]
+    INNER JOIN [Authors] AS [a] ON [b1].[AuthorId] = [a].[Id]
+) AS [s] ON [b0].[Id] = [s].[BookId]
+ORDER BY [b0].[Id], [p].[Id], [s].[Id]
+2025-10-09 15:33:19.840 +07:00 [INF] Finished GetAllBook request with data [{"Id":1,"Title":"T\u00F4i Th\u1EA5y Hoa V\u00E0ng Tr\u00EAn C\u1ECF Xanh","Description":"C\u00E2u chuy\u1EC7n tu\u1ED5i th\u01A1 h\u1ED3n nhi\u00EAn, c\u1EA3m \u0111\u1ED9ng c\u1EE7a hai anh em Thi\u1EC1u v\u00E0 T\u01B0\u1EDDng.","IsRead":true,"DateRead":"2025-10-07T00:00:00","Rate":5,"Genre":"Tu\u1ED5i th\u01A1","CoverUrl":"https://i.pinimg.com/474x/1c/71/55/1c7155f928b1b9dcf71f054be08c7f3c.jpg","DateAdded":"0001-01-01T00:00:00","PublisherName":"NXB Tr\u1EBB","AuthorNames":["Nguy\u1EC5n Nh\u1EADt \u00C1nh"]},{"Id":2,"Title":"D\u1EBF M\u00E8n Phi\u00EAu L\u01B0u K\u00FD","Description":"H\u00E0nh tr\u00ECnh tr\u01B0\u1EDFng th\u00E0nh v\u00E0 kh\u00E1m ph\u00E1 th\u1EBF gi\u1EDBi c\u1EE7a D\u1EBF M\u00E8n.","IsRead":true,"DateRead":"2025-09-20T00:00:00","Rate":4,"Genre":"Thi\u1EBFu nhi","CoverUrl":"https://i.pinimg.com/474x/1c/71/55/1c7155f928b1b9dcf71f054be08c7f3c.jpg","DateAdded":"0001-01-01T00:00:00","PublisherName":"NXB Kim \u0110\u1ED3ng","AuthorNames":["T\u00F4 Ho\u00E0i"]},{"Id":3,"Title":"Ch\u00ED Ph\u00E8o","Description":"Bi k\u1ECBch c\u1EE7a ng\u01B0\u1EDDi n\u00F4ng d\u00E2n b\u1ECB x\u00E3 h\u1ED9i tha ho\u00E1 trong th\u1EDDi k\u1EF3 phong ki\u1EBFn.","IsRead":false,"DateRead":null,"Rate":null,"Genre":"Hi\u1EC7n th\u1EF1c ph\u00EA ph\u00E1n","CoverUrl":"https://i.pinimg.com/474x/1c/71/55/1c7155f928b1b9dcf71f054be08c7f3c.jpg","DateAdded":"0001-01-01T00:00:00","PublisherName":"NXB V\u0103n H\u1ECDc","AuthorNames":["Nam Cao"]},{"Id":4,"Title":"C\u00E1nh \u0110\u1ED3ng B\u1EA5t T\u1EADn","Description":"Nh\u1EEFng ph\u1EADn ng\u01B0\u1EDDi l\u1EA7m l\u0169i v\u00E0 kh\u00E1t v\u1ECDng s\u1ED1ng n\u01A1i mi\u1EC1n s\u00F4ng n\u01B0\u1EDBc.","IsRead":true,"DateRead":"2025-08-10T00:00:00","Rate":5,"Genre":"T\u00E2m l\u00FD x\u00E3 h\u1ED9i","CoverUrl":"https://i.pinimg.com/474x/1c/71/55/1c7155f928b1b9dcf71f054be08c7f3c.jpg","DateAdded":"0001-01-01T00:00:00","PublisherName":"NXB H\u1ED9i Nh\u00E0 V\u0103n","AuthorNames":["Nguy\u1EC5n Ng\u1ECDc T\u01B0"]},{"Id":5,"Title":"B\u1EBFn Qu\u00EA","Description":"C\u00E2u chuy\u1EC7n v\u1EC1 s\u1ED1 ph\u1EADn con ng\u01B0\u1EDDi v\u00E0 nh\u1EEFng gi\u00E1 tr\u1ECB b\u00ECnh d\u1ECB c\u1EE7a cu\u1ED9c s\u1ED1ng.","IsRead":true,"DateRead":"2025-07-15T00:00:00","Rate":4,"Genre":"T\u00E2m l\u00FD x\u00E3 h\u1ED9i","CoverUrl":"https://i.pinimg.com/474x/1c/71/55/1c7155f928b1b9dcf71f054be08c7f3c.jpg","DateAdded":"0001-01-01T00:00:00","PublisherName":"NXB V\u0103n H\u1ECDc","AuthorNames":["Nguy\u1EC5n Minh Ch\u00E2u"]},{"Id":6,"Title":"\u00D4ng Gi\u00E0 V\u00E0 Bi\u1EC3n C\u1EA3","Description":"C\u00E2u chuy\u1EC7n v\u1EC1 ngh\u1ECB l\u1EF1c phi th\u01B0\u1EDDng c\u1EE7a con ng\u01B0\u1EDDi tr\u01B0\u1EDBc thi\u00EAn nhi\u00EAn kh\u1EAFc nghi\u1EC7t.","IsRead":true,"DateRead":"2025-06-10T00:00:00","Rate":5,"Genre":"V\u0103n h\u1ECDc n\u01B0\u1EDBc ngo\u00E0i","CoverUrl":"https://i.pinimg.com/474x/1c/71/55/1c7155f928b1b9dcf71f054be08c7f3c.jpg","DateAdded":"0001-01-01T00:00:00","PublisherName":"NXB H\u1ED9i Nh\u00E0 V\u0103n","AuthorNames":["Hemingway"]},{"Id":7,"Title":"Harry Potter v\u00E0 H\u00F2n \u0110\u00E1 Ph\u00F9 Th\u1EE7y","Description":"Cu\u1ED9c phi\u00EAu l\u01B0u \u0111\u1EA7u ti\u00EAn c\u1EE7a c\u1EADu b\u00E9 ph\u00F9 th\u1EE7y Harry Potter t\u1EA1i Hogwarts.","IsRead":true,"DateRead":"2025-05-01T00:00:00","Rate":5,"Genre":"Gi\u1EA3 t\u01B0\u1EDFng","CoverUrl":"https://i.pinimg.com/474x/1c/71/55/1c7155f928b1b9dcf71f054be08c7f3c.jpg","DateAdded":"0001-01-01T00:00:00","PublisherName":"NXB Kim \u0110\u1ED3ng","AuthorNames":["J.K. Rowling"]},{"Id":8,"Title":"1984","Description":"M\u1ED9t x\u00E3 h\u1ED9i to\u00E0n tr\u1ECB n\u01A1i m\u1ECDi h\u00E0nh \u0111\u1ED9ng \u0111\u1EC1u b\u1ECB gi\u00E1m s\u00E1t.","IsRead":false,"DateRead":null,"Rate":null,"Genre":"Ch\u00EDnh tr\u1ECB - X\u00E3 h\u1ED9i","CoverUrl":"https://i.pinimg.com/474x/1c/71/55/1c7155f928b1b9dcf71f054be08c7f3c.jpg","DateAdded":"0001-01-01T00:00:00","PublisherName":"NXB Ph\u1EE5 N\u1EEF Vi\u1EC7t Nam","AuthorNames":["George Orwell"]},{"Id":9,"Title":"R\u1EEBng Na Uy","Description":"H\u00E0nh tr\u00ECnh tu\u1ED5i tr\u1EBB \u0111\u1EA7y m\u1EA5t m\u00E1t v\u00E0 kh\u00E1t v\u1ECDng s\u1ED1ng.","IsRead":true,"DateRead":"2025-03-18T00:00:00","Rate":4,"Genre":"T\u00E2m l\u00FD - L\u00E3ng m\u1EA1n","CoverUrl":"https://i.pinimg.com/474x/1c/71/55/1c7155f928b1b9dcf71f054be08c7f3c.jpg","DateAdded":"0001-01-01T00:00:00","PublisherName":"NXB Tr\u1EBB","AuthorNames":["Nam Cao"]}]
+2025-10-09 15:33:19.847 +07:00 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[WebAPI_simple.Models.DTO.BookWithAuthorAndPublisherDTO, WebAPI-simple, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-10-09 15:33:19.849 +07:00 [INF] Executed action WebAPI_simple.Controllers.BooksController.GetAll (WebAPI-simple) in 51.2014ms
+2025-10-09 15:33:19.851 +07:00 [INF] Executed endpoint 'WebAPI_simple.Controllers.BooksController.GetAll (WebAPI-simple)'
+2025-10-09 15:33:19.853 +07:00 [INF] Request finished HTTP/1.1 GET https://localhost:7005/api/Books/get-all-books?filterOn=&filterQuery=&sortBy=&isAscending=True - 200 null application/json; charset=utf-8 66.3757ms
+2025-10-09 15:33:23.021 +07:00 [INF] Request starting HTTP/1.1 GET https://localhost:7005/api/Authors/get-all-authors - null null
+2025-10-09 15:33:23.029 +07:00 [INF] Executing endpoint 'WebAPI_simple.Controllers.AuthorsController.GetAllAuthors (WebAPI-simple)'
+2025-10-09 15:33:23.030 +07:00 [INF] Route matched with {action = "GetAllAuthors", controller = "Authors"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAllAuthors() on controller WebAPI_simple.Controllers.AuthorsController (WebAPI-simple).
+2025-10-09 15:33:23.056 +07:00 [INF] Executed DbCommand (4ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [a].[Id], [a].[FullName]
+FROM [Authors] AS [a]
+2025-10-09 15:33:23.061 +07:00 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[WebAPI_simple.Models.DTO.AuthorDTO, WebAPI-simple, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-10-09 15:33:23.063 +07:00 [INF] Executed action WebAPI_simple.Controllers.AuthorsController.GetAllAuthors (WebAPI-simple) in 30.2277ms
+2025-10-09 15:33:23.065 +07:00 [INF] Executed endpoint 'WebAPI_simple.Controllers.AuthorsController.GetAllAuthors (WebAPI-simple)'
+2025-10-09 15:33:23.067 +07:00 [INF] Request finished HTTP/1.1 GET https://localhost:7005/api/Authors/get-all-authors - 200 null application/json; charset=utf-8 45.8128ms
+2025-10-09 15:33:23.080 +07:00 [INF] Request starting HTTP/1.1 GET https://localhost:7005/api/Publishers/get-all-publishers - null null
+2025-10-09 15:33:23.084 +07:00 [INF] Executing endpoint 'WebAPI_simple.Controllers.PublishersController.GetAllPublishers (WebAPI-simple)'
+2025-10-09 15:33:23.085 +07:00 [INF] Route matched with {action = "GetAllPublishers", controller = "Publishers"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAllPublishers() on controller WebAPI_simple.Controllers.PublishersController (WebAPI-simple).
+2025-10-09 15:33:23.113 +07:00 [INF] Executed DbCommand (4ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [p].[Id], [p].[Name]
+FROM [Publishers] AS [p]
+2025-10-09 15:33:23.121 +07:00 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[WebAPI_simple.Models.DTO.PublisherDTO, WebAPI-simple, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-10-09 15:33:23.124 +07:00 [INF] Executed action WebAPI_simple.Controllers.PublishersController.GetAllPublishers (WebAPI-simple) in 35.5252ms
+2025-10-09 15:33:23.126 +07:00 [INF] Executed endpoint 'WebAPI_simple.Controllers.PublishersController.GetAllPublishers (WebAPI-simple)'
+2025-10-09 15:33:23.129 +07:00 [INF] Request finished HTTP/1.1 GET https://localhost:7005/api/Publishers/get-all-publishers - 200 null application/json; charset=utf-8 48.8579ms
+2025-10-09 15:33:38.773 +07:00 [INF] Request starting HTTP/1.1 GET https://localhost:7005/api/Books/get-book-by-id/4 - null null
+2025-10-09 15:33:38.777 +07:00 [INF] Executing endpoint 'WebAPI_simple.Controllers.BooksController.GetBookById (WebAPI-simple)'
+2025-10-09 15:33:38.782 +07:00 [INF] Route matched with {action = "GetBookById", controller = "Books"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetBookById(Int32) on controller WebAPI_simple.Controllers.BooksController (WebAPI-simple).
+2025-10-09 15:33:38.831 +07:00 [INF] Executed DbCommand (3ms) [Parameters=[@__id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [s].[Id], [s].[Title], [s].[Description], [s].[IsRead], [s].[DateRead], [s].[Rate], [s].[Genre], [s].[CoverUrl], [s].[Name], [s].[Id0], [s0].[FullName], [s0].[Id], [s0].[Id0]
+FROM (
+    SELECT TOP(1) [b].[Id], [b].[Title], [b].[Description], [b].[IsRead], [b].[DateRead], [b].[Rate], [b].[Genre], [b].[CoverUrl], [p].[Name], [p].[Id] AS [Id0]
+    FROM [Books] AS [b]
+    INNER JOIN [Publishers] AS [p] ON [b].[PublisherID] = [p].[Id]
+    WHERE [b].[Id] = @__id_0
+) AS [s]
+LEFT JOIN (
+    SELECT [a].[FullName], [b0].[Id], [a].[Id] AS [Id0], [b0].[BookId]
+    FROM [Book_Authors] AS [b0]
+    INNER JOIN [Authors] AS [a] ON [b0].[AuthorId] = [a].[Id]
+) AS [s0] ON [s].[Id] = [s0].[BookId]
+ORDER BY [s].[Id], [s].[Id0], [s0].[Id]
+2025-10-09 15:33:38.836 +07:00 [INF] Executing OkObjectResult, writing value of type 'WebAPI_simple.Models.DTO.BookWithAuthorAndPublisherDTO'.
+2025-10-09 15:33:38.838 +07:00 [INF] Executed action WebAPI_simple.Controllers.BooksController.GetBookById (WebAPI-simple) in 52.6411ms
+2025-10-09 15:33:38.839 +07:00 [INF] Executed endpoint 'WebAPI_simple.Controllers.BooksController.GetBookById (WebAPI-simple)'
+2025-10-09 15:33:38.841 +07:00 [INF] Request finished HTTP/1.1 GET https://localhost:7005/api/Books/get-book-by-id/4 - 200 null application/json; charset=utf-8 69.1626ms
+2025-10-09 15:33:38.854 +07:00 [INF] Request starting HTTP/1.1 GET https://localhost:7005/api/Authors/get-all-authors - null null
+2025-10-09 15:33:38.858 +07:00 [INF] Executing endpoint 'WebAPI_simple.Controllers.AuthorsController.GetAllAuthors (WebAPI-simple)'
+2025-10-09 15:33:38.860 +07:00 [INF] Route matched with {action = "GetAllAuthors", controller = "Authors"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAllAuthors() on controller WebAPI_simple.Controllers.AuthorsController (WebAPI-simple).
+2025-10-09 15:33:38.886 +07:00 [INF] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [a].[Id], [a].[FullName]
+FROM [Authors] AS [a]
+2025-10-09 15:33:38.890 +07:00 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[WebAPI_simple.Models.DTO.AuthorDTO, WebAPI-simple, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-10-09 15:33:38.893 +07:00 [INF] Executed action WebAPI_simple.Controllers.AuthorsController.GetAllAuthors (WebAPI-simple) in 29.8064ms
+2025-10-09 15:33:38.895 +07:00 [INF] Executed endpoint 'WebAPI_simple.Controllers.AuthorsController.GetAllAuthors (WebAPI-simple)'
+2025-10-09 15:33:38.897 +07:00 [INF] Request finished HTTP/1.1 GET https://localhost:7005/api/Authors/get-all-authors - 200 null application/json; charset=utf-8 42.9128ms
+2025-10-09 15:33:38.905 +07:00 [INF] Request starting HTTP/1.1 GET https://localhost:7005/api/Publishers/get-all-publishers - null null
+2025-10-09 15:33:38.911 +07:00 [INF] Executing endpoint 'WebAPI_simple.Controllers.PublishersController.GetAllPublishers (WebAPI-simple)'
+2025-10-09 15:33:38.912 +07:00 [INF] Route matched with {action = "GetAllPublishers", controller = "Publishers"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAllPublishers() on controller WebAPI_simple.Controllers.PublishersController (WebAPI-simple).
+2025-10-09 15:33:38.934 +07:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [p].[Id], [p].[Name]
+FROM [Publishers] AS [p]
+2025-10-09 15:33:38.937 +07:00 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[WebAPI_simple.Models.DTO.PublisherDTO, WebAPI-simple, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-10-09 15:33:38.940 +07:00 [INF] Executed action WebAPI_simple.Controllers.PublishersController.GetAllPublishers (WebAPI-simple) in 25.4152ms
+2025-10-09 15:33:38.942 +07:00 [INF] Executed endpoint 'WebAPI_simple.Controllers.PublishersController.GetAllPublishers (WebAPI-simple)'
+2025-10-09 15:33:38.944 +07:00 [INF] Request finished HTTP/1.1 GET https://localhost:7005/api/Publishers/get-all-publishers - 200 null application/json; charset=utf-8 39.2301ms
+2025-10-09 15:33:46.493 +07:00 [INF] Request starting HTTP/1.1 GET https://localhost:7005/api/Books/get-book-by-id/9 - null null
+2025-10-09 15:33:46.498 +07:00 [INF] Executing endpoint 'WebAPI_simple.Controllers.BooksController.GetBookById (WebAPI-simple)'
+2025-10-09 15:33:46.499 +07:00 [INF] Route matched with {action = "GetBookById", controller = "Books"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetBookById(Int32) on controller WebAPI_simple.Controllers.BooksController (WebAPI-simple).
+2025-10-09 15:33:46.526 +07:00 [INF] Executed DbCommand (4ms) [Parameters=[@__id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [s].[Id], [s].[Title], [s].[Description], [s].[IsRead], [s].[DateRead], [s].[Rate], [s].[Genre], [s].[CoverUrl], [s].[Name], [s].[Id0], [s0].[FullName], [s0].[Id], [s0].[Id0]
+FROM (
+    SELECT TOP(1) [b].[Id], [b].[Title], [b].[Description], [b].[IsRead], [b].[DateRead], [b].[Rate], [b].[Genre], [b].[CoverUrl], [p].[Name], [p].[Id] AS [Id0]
+    FROM [Books] AS [b]
+    INNER JOIN [Publishers] AS [p] ON [b].[PublisherID] = [p].[Id]
+    WHERE [b].[Id] = @__id_0
+) AS [s]
+LEFT JOIN (
+    SELECT [a].[FullName], [b0].[Id], [a].[Id] AS [Id0], [b0].[BookId]
+    FROM [Book_Authors] AS [b0]
+    INNER JOIN [Authors] AS [a] ON [b0].[AuthorId] = [a].[Id]
+) AS [s0] ON [s].[Id] = [s0].[BookId]
+ORDER BY [s].[Id], [s].[Id0], [s0].[Id]
+2025-10-09 15:33:46.531 +07:00 [INF] Executing OkObjectResult, writing value of type 'WebAPI_simple.Models.DTO.BookWithAuthorAndPublisherDTO'.
+2025-10-09 15:33:46.534 +07:00 [INF] Executed action WebAPI_simple.Controllers.BooksController.GetBookById (WebAPI-simple) in 31.3075ms
+2025-10-09 15:33:46.536 +07:00 [INF] Executed endpoint 'WebAPI_simple.Controllers.BooksController.GetBookById (WebAPI-simple)'
+2025-10-09 15:33:46.538 +07:00 [INF] Request finished HTTP/1.1 GET https://localhost:7005/api/Books/get-book-by-id/9 - 200 null application/json; charset=utf-8 44.7699ms
